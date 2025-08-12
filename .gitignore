@@ -1,0 +1,26 @@
+# Ignore DLL files
+*.dll
+
+# Ignore EXE files
+*.exe
+
+# Ignore backup files
+*.bak
+
+# Ignore compiled stylesheets (if using SCSS)
+*.css.map
+
+# Ignore system/IDE files
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
+
+# Ignore GitHub Pages Jekyll defaults
+docs/
+_site/
+
+# Optional: ignore database dumps or SQL backups
+*.sql
+*.sqlite
+*.db
