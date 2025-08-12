@@ -78,11 +78,10 @@ Copy
 Edit
 http://localhost/College-Placement-Portal/index.php
 
-### Usage Notes
-Admin and student login credentials are stored in the database.
+Usage Notes
 Admin Features:
 Manage placement drives
-Add/view students
+Add/view/edit student records
 Manage companies
 
 Student Features:
