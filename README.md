@@ -17,124 +17,53 @@ blog to the most popular websites in the world. PHP is distributed under the
 [![Push](https://github.com/php/php-src/actions/workflows/push.yml/badge.svg)](https://github.com/php/php-src/actions/workflows/push.yml)
 [![Fuzzing Status](https://oss-fuzz-build-logs.storage.googleapis.com/badges/php.svg)](https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:php)
 
-## Documentation
+# College Placement Portal
 
-The PHP manual is available at [php.net/docs](https://www.php.net/docs).
+Project Overview
+College Placement Portal is a web application developed using PHP, MySQL, HTML, CSS, JavaScript, and Bootstrap to efficiently manage campus placement activities. The system provides separate login portals for Admin (placement officers) and Students to facilitate placement drives, registrations, and communication.
 
-## Installation
+# Features
 
-### Prebuilt packages and binaries
+User Authentication: Separate login systems for Admin and Students.
+Admin Panel: Manage student profiles, placement drives, and company details.
+Student Dashboard: View and apply for placement drives.
+Placement Management: Admin can add and manage placement records.
+Responsive UI: Designed using Bootstrap for mobile and desktop compatibility.
+Contact Page: Students can easily reach out to placement officers.
 
-Prebuilt packages and binaries can be used to get up and running fast with PHP.
+# Technologies Used
 
-For Windows, the PHP binaries can be obtained from
-[windows.php.net](https://windows.php.net). After extracting the archive the
-`*.exe` files are ready to use.
+Backend: PHP 7.x / 8.x
+Database: MySQL (managed through phpMyAdmin)
+Frontend: HTML5, CSS3, Bootstrap 4, JavaScript, jQuery
+Server Environment: XAMPP (Apache + MySQL)
+Version Control: Git and GitHub
 
-For other systems, see the [installation chapter](https://www.php.net/install).
+# Installation & Setup Instructions
+# Prerequisites
 
-### Building PHP source code
+Install XAMPP or any PHP-MySQL server stack.
+Clone or download this repository.
 
-*For Windows, see [Build your own PHP on Windows](https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2).*
+# Steps
 
-For a minimal PHP build from Git, you will need autoconf, bison, and re2c. For
-a default build, you will additionally need libxml2 and libsqlite3.
+Copy the project folder to the XAMPP htdocs directory, e.g.,
+C:\xampp\htdocs\College-Placement-Portal
+Start Apache and MySQL from the XAMPP Control Panel.
+Open http://localhost/phpmyadmin in your browser.
+Create a new database named (for example) placement_portal.
+Import the provided SQL file (if included in the project folder).
+Update database credentials in your configuration file (like db.php) if necessary.
+Open the project in your browser:
+http://localhost/College-Placement-Portal/index.php
+Login as Admin or Student to access the portal.
 
-On Ubuntu, you can install these using:
+# Usage Notes
+Admin and student credentials are stored in the database.
+Admin can manage placement drives and student info.
+Students can register, login, and apply for placement drives.
 
-    sudo apt install -y pkg-config build-essential autoconf bison re2c \
-                        libxml2-dev libsqlite3-dev
+# License
 
-On Fedora, you can install these using:
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-    sudo dnf install re2c bison autoconf make libtool ccache libxml2-devel sqlite-devel
-
-Generate configure:
-
-    ./buildconf
-
-Configure your build. `--enable-debug` is recommended for development, see
-`./configure --help` for a full list of options.
-
-    # For development
-    ./configure --enable-debug
-    # For production
-    ./configure
-
-Build PHP. To speed up the build, specify the maximum number of jobs using `-j`:
-
-    make -j4
-
-The number of jobs should usually match the number of available cores, which
-can be determined using `nproc`.
-
-## Testing PHP source code
-
-PHP ships with an extensive test suite, the command `make test` is used after
-successful compilation of the sources to run this test suite.
-
-It is possible to run tests using multiple cores by setting `-jN` in
-`TEST_PHP_ARGS`:
-
-    make TEST_PHP_ARGS=-j4 test
-
-Shall run `make test` with a maximum of 4 concurrent jobs: Generally the maximum
-number of jobs should not exceed the number of cores available.
-
-The [qa.php.net](https://qa.php.net) site provides more detailed info about
-testing and quality assurance.
-
-## Installing PHP built from source
-
-After a successful build (and test), PHP may be installed with:
-
-    make install
-
-Depending on your permissions and prefix, `make install` may need super user
-permissions.
-
-## PHP extensions
-
-Extensions provide additional functionality on top of PHP. PHP consists of many
-essential bundled extensions. Additional extensions can be found in the PHP
-Extension Community Library - [PECL](https://pecl.php.net).
-
-## Contributing
-
-The PHP source code is located in the Git repository at
-[github.com/php/php-src](https://github.com/php/php-src). Contributions are most
-welcome by forking the repository and sending a pull request.
-
-Discussions are done on GitHub, but depending on the topic can also be relayed
-to the official PHP developer mailing list internals@lists.php.net.
-
-New features require an RFC and must be accepted by the developers. See
-[Request for comments - RFC](https://wiki.php.net/rfc) and
-[Voting on PHP features](https://wiki.php.net/rfc/voting) for more information
-on the process.
-
-Bug fixes don't require an RFC. If the bug has a GitHub issue, reference it in
-the commit message using `GH-NNNNNN`. Use `#NNNNNN` for tickets in the old
-[bugs.php.net](https://bugs.php.net) bug tracker.
-
-    Fix GH-7815: php_uname doesn't recognise latest Windows versions
-    Fix #55371: get_magic_quotes_gpc() throws deprecation warning
-
-See [Git workflow](https://wiki.php.net/vcs/gitworkflow) for details on how pull
-requests are merged.
-
-### Guidelines for contributors
-
-See further documents in the repository for more information on how to
-contribute:
-
-- [Contributing to PHP](/CONTRIBUTING.md)
-- [PHP coding standards](/CODING_STANDARDS.md)
-- [Internal documentation](https://php.github.io/php-src/)
-- [Mailing list rules](/docs/mailinglist-rules.md)
-- [PHP release process](/docs/release-process.md)
-
-## Credits
-
-For the list of people who've put work into PHP, please see the
-[PHP credits page](https://www.php.net/credits.php).
