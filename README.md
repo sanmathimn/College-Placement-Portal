@@ -18,7 +18,7 @@ A web-based platform developed using **PHP, MySQL, HTML, CSS, JavaScript, and Bo
 
 ## 🚀 Project Overview
 
-College Placement Portal is a web application developed using PHP, MySQL, HTML, CSS, JavaScript, and Bootstrap to efficiently manage campus placement activities. The system provides separate login portals for Admin (placement officers) and Students to facilitate placement drives, registrations, and communication.
+College Placement Portal is a web application developed using PHP, MySQL, HTML, CSS, JavaScript, and Bootstrap to efficiently manage campus placement activities. The system provides a separate login portals for Admin (placement officers) and Students to facilitate placement drives, registrations, and communication.
 
 ---
 
