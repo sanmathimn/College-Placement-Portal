@@ -2,10 +2,10 @@
 session_start();
 include_once 'includes/db.inc.php';
 
-if(isset($_POST['login'])) {
+if (isset($_POST['login'])) {
     // Get input and escape for safety
     $uname = mysqli_real_escape_string($conn, $_POST['uname']);
-    $pwd = $_POST['pwd1']; // We'll verify hashed password later
+    $pwd = $_POST['pwd1']; // Plain text password
 
     // Query admin table
     $sql = "SELECT * FROM adminlogin WHERE uname = ?";
@@ -14,9 +14,9 @@ if(isset($_POST['login'])) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-    if($row = mysqli_fetch_assoc($result)) {
-        // Verify password assuming it's hashed
-        if(password_verify($pwd, $row['pwd'])) {
+    if ($row = mysqli_fetch_assoc($result)) {
+        // Compare plain text passwords directly
+        if ($pwd === $row['pwd']) {
             $_SESSION['username'] = $row['uname'];
             header("Location: admin/index.php");
             exit();
@@ -31,8 +31,8 @@ if(isset($_POST['login'])) {
         mysqli_stmt_execute($stmt2);
         $result2 = mysqli_stmt_get_result($stmt2);
 
-        if($row2 = mysqli_fetch_assoc($result2)) {
-            if(password_verify($pwd, $row2['pwd'])) {
+        if ($row2 = mysqli_fetch_assoc($result2)) {
+            if ($pwd === $row2['pwd']) {
                 $_SESSION['username'] = $row2['fname'];
                 header("Location: student/index.php");
                 exit();
@@ -54,16 +54,15 @@ if(isset($_POST['login'])) {
     <?php include_once 'includes/head.php' ?>
 </head>
 <body>
-    <!-- Your images and nav here -->
     <?php include_once 'includes/nav.php' ?>
-    
-    <div class="content" style="margin-top: 100px; margin-left: 10px;">
-        <h1 style="margin-left: 70px;">Sign in to your Account</h1> <br>
 
-        <?php if(!empty($login_error)) { ?>
-        <div class="alert alert-danger" style="margin-left:58px; width: 300px;">
-            <?php echo htmlspecialchars($login_error); ?>
-        </div>
+    <div class="content" style="margin-top: 100px; margin-left: 10px;">
+        <h1 style="margin-left: 70px;">Sign in to your Account</h1><br>
+
+        <?php if (!empty($login_error)) { ?>
+            <div class="alert alert-danger" style="margin-left:58px; width: 300px;">
+                <?php echo htmlspecialchars($login_error); ?>
+            </div>
         <?php } ?>
 
         <form action="login.php" method="POST" autocomplete="off" class="needs-validation" novalidate>
@@ -91,7 +90,6 @@ if(isset($_POST['login'])) {
     <?php include_once 'includes/footer.php' ?>
 
     <script>
-        // Bootstrap validation code here
         (function() {
             'use strict';
             window.addEventListener('load', function() {
